@@ -1,2 +1,1 @@
-# ExpressRoute
-ExpressRoute and Hybrid Networking Scenarios
+# ExpressRoute Fastpath
