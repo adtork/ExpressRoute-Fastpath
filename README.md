@@ -19,7 +19,7 @@ With Fastpath:
 ![image](https://user-images.githubusercontent.com/55964102/183219645-c2fbbe43-4ef9-49e7-9ab7-ccfdeb64ab40.png)
 
 
-Wihout Fastpath:
+Without Fastpath:
 
 Now, after toggling off and waiting about 5 mins we now see an extra HOP, HOP 3. That is the Express-Route GW now that we have disabled Fastpath. Packets still reach the destination since we have peering and enabled use remote gateway
 ![image](https://user-images.githubusercontent.com/55964102/183219938-fc8b5c86-0528-447d-9dfc-7456f7735d9b.png)
@@ -36,4 +36,7 @@ With Fastpath:
 Without Fastpath:
 
 ![image](https://user-images.githubusercontent.com/55964102/183224719-1080faa6-4158-474c-9b46-c691d5b032a5.png)
+
+# Scenario 3: Testing with Ntttcp across the circuit toggling Fastpath
+To be continued......
 
