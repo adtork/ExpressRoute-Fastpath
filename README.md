@@ -16,7 +16,6 @@ With Fastpath:
 
 172.16.2.90 is MSEE IP on the Priv Peering Circuit. MSFT taks the next IP in /30. Megaport IP on MCR would be 172.16.2.89
 ![image](https://user-images.githubusercontent.com/55964102/183224651-b0944d34-bcbb-4e0d-afe4-d69f42e1878a.png)
-![image](https://user-images.githubusercontent.com/55964102/183454843-082cc287-ca19-494c-83ce-decd350acfae.png)
 ![image](https://user-images.githubusercontent.com/55964102/183455163-3d694e1c-9652-4ddb-b5cf-1ed4d0252707.png)
 
 
