@@ -39,5 +39,40 @@ Without Fastpath:
 ![image](https://user-images.githubusercontent.com/55964102/183224719-1080faa6-4158-474c-9b46-c691d5b032a5.png)
 
 # Scenario 3: Testing with Ntttcp across the circuit toggling Fastpath
-To be continued......
+For this test, I used NTtttcp and did two runs each to remote VM in Spoke-Vnet2 **without** the UDR applied. First two tests are with Fastpath toggled on and then off. I followed the public docs for setup: https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-bandwidth-testing#testing-between-vms-running-windows-and-linux
 
+With Fastpath:
+
+Run 1:
+Sender=Linux
+
+Reciever=Windows VM
+
+Reciever:
+c:\Tools>ntttcp -r -m 8,*,10.12.0.4
+Copyright Version 5.36
+
+Sender
+adam_torkar@onprem-vm1:~$ ntttcp -s -m 2,*,10.12.0.4 -N -t 60
+NTTTCP for Linux 1.4.0
+---------------------------------------------------------
+20:04:57 INFO: Starting sender activity (no sync) ...
+20:04:57 INFO: 2 threads created
+20:04:57 INFO: 2 connections created in 125099 microseconds
+20:05:57 INFO: Test run completed.
+20:05:57 INFO: Test cycle finished.
+20:06:29 INFO: 2 connections tested
+20:06:29 INFO: #####  Totals:  #####
+20:06:29 INFO: test duration    :60.00 seconds
+20:06:29 INFO: total bytes      :2752512
+20:06:29 INFO:   throughput     :367.00Kbps
+20:06:29 INFO:   retrans segs   :0
+20:06:29 INFO: cpu cores        :1
+20:06:29 INFO:   cpu speed      :2299.998MHz
+20:06:29 INFO:   user           :0.44%
+20:06:29 INFO:   system         :1.14%
+20:06:29 INFO:   idle           :98.41%
+20:06:29 INFO:   iowait         :0.00%
+20:06:29 INFO:   softirq        :0.00%
+20:06:29 INFO:   cycles/byte    :796.36
+20:06:29 INFO: cpu busy (all)   :3.00%
