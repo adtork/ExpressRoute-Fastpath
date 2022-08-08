@@ -33,7 +33,7 @@ For this simple test, I created a UDR on Hub-Vnet1 with destination of 10.12.0.0
 With Fastpath:
 
 ![image](https://user-images.githubusercontent.com/55964102/183224508-a304ed43-81f9-4b29-9786-379049856857.png)
-![image](https://user-images.githubusercontent.com/55964102/183224112-c620acf8-c41a-4aaa-bdb8-5e4a5fa2cb67.png)
+![image](https://user-images.githubusercontent.com/55964102/183464302-9bcc53a3-9bd2-4d2f-b735-fa4c6b4205f7.png)
 
 Without Fastpath:
 
