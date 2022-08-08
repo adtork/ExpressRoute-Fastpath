@@ -39,7 +39,7 @@ Without Fastpath:
 ![image](https://user-images.githubusercontent.com/55964102/183224719-1080faa6-4158-474c-9b46-c691d5b032a5.png)
 
 # Scenario 3: Testing with Ntttcp across the circuit toggling Fastpath
-For this test, I used NTtttcp and did two runs each to remote VM in Spoke-Vnet2 **without** the UDR applied. First two tests are with Fastpath toggled on and then off. I followed the public docs for setup: https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-bandwidth-testing#testing-between-vms-running-windows-and-linux
+For this test, I used NTtttcp and did two runs each to remote VM in Spoke-Vnet2 **without** the UDR applied. The Azure VM in question has 4vCPUs and the GCP VM only has one vCPU. First two tests are with Fastpath toggled on, and last two with Fastpath toggled off. I followed the public docs for setup: https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-bandwidth-testing#testing-between-vms-running-windows-and-linux
 
 With Fastpath:
 
@@ -73,7 +73,32 @@ NTTTCP for Linux 1.4.0
 20:06:29 INFO:   softirq        :0.00%
 20:06:29 INFO:   cycles/byte    :796.36
 20:06:29 INFO: cpu busy (all)   :3.00%
-
-```bash
-
+```
 Run 2:
+```bash
+Same paramaters and flow as per above, slighly better throughput on 60s run
+
+adam_torkar@onprem-vm1:~$ ntttcp -s -m 2,*,10.12.0.4 -N -t 60
+NTTTCP for Linux 1.4.0
+---------------------------------------------------------
+20:13:00 INFO: Starting sender activity (no sync) ...
+20:13:00 INFO: 2 threads created
+20:13:01 INFO: 2 connections created in 126500 microseconds
+20:14:01 INFO: Test run completed.
+20:14:01 INFO: Test cycle finished.
+20:14:33 INFO: 2 connections tested
+20:14:33 INFO: #####  Totals:  #####
+20:14:33 INFO: test duration    :60.00 seconds
+20:14:33 INFO: total bytes      :2883584
+20:14:33 INFO:   throughput     :384.48Kbps
+20:14:33 INFO:   retrans segs   :0
+20:14:33 INFO: cpu cores        :1
+20:14:33 INFO:   cpu speed      :2299.998MHz
+20:14:33 INFO:   user           :1.66%
+20:14:33 INFO:   system         :1.31%
+20:14:33 INFO:   idle           :97.01%
+20:14:33 INFO:   iowait         :0.02%
+20:14:33 INFO:   softirq        :0.00%
+20:14:33 INFO:   cycles/byte    :1428.94
+20:14:33 INFO: cpu busy (all)   :2.92%
+```
