@@ -44,15 +44,12 @@ For this test, I used NTtttcp and did two runs each to remote VM in Spoke-Vnet2 
 With Fastpath:
 
 Run 1:
-Sender=Linux
-
-Reciever=Windows VM
-
-Reciever:
+```bash
+Reciever: (Windows-Azure)
 c:\Tools>ntttcp -r -m 8,*,10.12.0.4
 Copyright Version 5.36
 
-Sender
+Sender: (linux-GCP)
 adam_torkar@onprem-vm1:~$ ntttcp -s -m 2,*,10.12.0.4 -N -t 60
 NTTTCP for Linux 1.4.0
 ---------------------------------------------------------
@@ -76,3 +73,7 @@ NTTTCP for Linux 1.4.0
 20:06:29 INFO:   softirq        :0.00%
 20:06:29 INFO:   cycles/byte    :796.36
 20:06:29 INFO: cpu busy (all)   :3.00%
+
+```bash
+
+Run 2:
