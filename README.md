@@ -102,3 +102,73 @@ NTTTCP for Linux 1.4.0
 20:14:33 INFO:   cycles/byte    :1428.94
 20:14:33 INFO: cpu busy (all)   :2.92%
 ```
+Without Fastpath
+
+Run: 1
+
+```bash
+Reciever: (Windows-Azure)
+c:\Tools>ntttcp -r -m 8,*,10.12.0.4
+Copyright Version 5.36
+
+Sender: (linux-GCP)
+adam_torkar@onprem-vm1:~$ ntttcp -s -m 2,*,10.12.0.4 -N -t 60
+NTTTCP for Linux 1.4.0
+
+adam_torkar@onprem-vm1:~$ ntttcp -s -m 2,*,10.12.0.4 -N -t 60
+NTTTCP for Linux 1.4.0
+---------------------------------------------------------
+20:28:00 INFO: Starting sender activity (no sync) ...
+20:28:00 INFO: 2 threads created
+20:28:01 INFO: 2 connections created in 128719 microseconds
+20:29:01 INFO: Test run completed.
+20:29:01 INFO: Test cycle finished.
+20:29:34 INFO: 2 connections tested
+20:29:34 INFO: #####  Totals:  #####
+20:29:34 INFO: test duration    :60.00 seconds
+20:29:34 INFO: total bytes      :2752512
+20:29:34 INFO:   throughput     :367.00Kbps
+20:29:34 INFO:   retrans segs   :0
+20:29:34 INFO: cpu cores        :1
+20:29:34 INFO:   cpu speed      :2299.998MHz
+20:29:34 INFO:   user           :6.03%
+20:29:34 INFO:   system         :1.99%
+20:29:34 INFO:   idle           :90.35%
+20:29:34 INFO:   iowait         :1.62%
+20:29:34 INFO:   softirq        :0.00%
+20:29:34 INFO:   cycles/byte    :4836.74
+20:29:34 INFO: cpu busy (all)   :2.84%
+---------------------------------------------------------
+```
+
+Run: 2
+Same paramaters and flow as per above:
+
+```bash
+adam_torkar@onprem-vm1:~$ ntttcp -s -m 2,*,10.12.0.4 -N -t 60
+NTTTCP for Linux 1.4.0
+---------------------------------------------------------
+20:33:08 INFO: Starting sender activity (no sync) ...
+20:33:08 INFO: 2 threads created
+20:33:08 INFO: 2 connections created in 128105 microseconds
+20:34:08 INFO: Test run completed.
+20:34:08 INFO: Test cycle finished.
+20:34:41 INFO: 2 connections tested
+20:34:41 INFO: #####  Totals:  #####
+20:34:41 INFO: test duration    :60.00 seconds
+20:34:41 INFO: total bytes      :2621440
+20:34:41 INFO:   throughput     :349.52Kbps
+20:34:41 INFO:   retrans segs   :0
+20:34:41 INFO: cpu cores        :1
+20:34:41 INFO:   cpu speed      :2299.998MHz
+20:34:41 INFO:   user           :1.50%
+20:34:41 INFO:   system         :1.35%
+20:34:41 INFO:   idle           :97.15%
+20:34:41 INFO:   iowait         :0.00%
+20:34:41 INFO:   softirq        :0.00%
+20:34:41 INFO:   cycles/byte    :1501.52
+20:34:41 INFO: cpu busy (all)   :2.88%
+```
+
+## Conclusion
+We can see a couple different things from this lab. For the tcptraceroute tests, enabling Fastpath, we see one less hop in the route path, which is an easy way to validate that fastpath is enabled for customers in addition to checking in the UI or using another API call. For the perf tests, we don't get much of a difference with Fastpath enabled or not enabled. In this case my test circuit was only 50Mbps, and I also had 120ms latency pinging from GCP to Azure. Biggest factors that affect perf are iRTT (Round Trip Time), TCP Window Scale Factor, and the application itself (Whether or not it can do parallel connections). You are also only going to be as fast as your lowest denominator. So, even though my ExR GW is ultra-perf (10Gbps) the circuit itself is only 50mbps. Just toggling Fastpath does not seem to greatly alter peformance in this scenario based on the other factors.
