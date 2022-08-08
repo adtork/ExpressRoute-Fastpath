@@ -6,7 +6,8 @@ https://docs.microsoft.com/en-us/azure/expressroute/about-fastpath
 We are going to cover the scenarios currently in public preview per above, minus the PLS scneario as I don't have the ability to create a direct port circuit. I will also cover running Ntttcp with and without Fastpath on to measure the peformance differences. This lab is for visual purposes only with active VMs. I already have a circuit created ahead of time with BGP peering up and Fastpath enabled on the ExpressRoute connection object. This can be done directly on the portal on the connection object, or using CLI as seen here: https://docs.microsoft.com/en-us/azure/expressroute/expressroute-howto-linkvnet-arm#configure-expressroute-fastpath
 
 # Basic Topology
-![image](https://user-images.githubusercontent.com/55964102/183454531-1f4e8127-5de7-4284-9b76-6a1e00821675.png)
+![image](https://user-images.githubusercontent.com/55964102/183457400-f8c07e60-5d3b-4861-91cb-223f90a32a5e.png)
+
 
 
 # Scenario 1: VNET Peering
