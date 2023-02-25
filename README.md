@@ -23,6 +23,7 @@ With Fastpath:
 Without Fastpath:
 
 Now, after toggling off and waiting about 5 mins we now see an extra HOP, HOP 3. That is the Express-Route GW now that we have disabled Fastpath. Packets still reach the destination since we have peering and enabled use remote gateway
+<br>
 ![image](https://user-images.githubusercontent.com/55964102/183219938-fc8b5c86-0528-447d-9dfc-7456f7735d9b.png)
 
 # Scenario 2: UDR on Gateway Subnet with Next Hop Linux NVA w/ IP Forwarding
